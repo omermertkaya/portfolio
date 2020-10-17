@@ -120,7 +120,8 @@ h3 { font-size: var(--fs-h3) }
 }
 
 .section__subtitle--intro,
-.section__subtitle--about {
+.section__subtitle--about,
+.section__subtitle--story{
     background: var(--clr-accent);
     padding: .25em 1em;
     font-family: var(--ff-secondary);
@@ -139,6 +140,10 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 1em;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+
 }
 
 .logo {
@@ -286,6 +291,8 @@ header {
 
 
 
+
+
 /*  My services section  */
 
 .my-services {
@@ -334,6 +341,50 @@ header {
     }
 }
 
+/* About Me */
+
+.intro {
+    position: relative;
+}
+
+.intro__img {
+    box-shadow: var(--bs);
+}
+
+.section__subtitle--intro {
+    display: inline-block;
+}
+
+@media (min-width: 600px) {
+    .intro {
+        display: grid;
+        width: min-content;
+        margin: 0 auto;
+        grid-column-gap: 1em;
+        grid-template-areas:
+            "img title"
+            "img subtitle";
+        grid-template-columns: min-content max-content;
+    }
+
+    .intro__img {
+        grid-area: img;
+        min-width: 250px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .section__subtitle--intro {
+        align-self: start;
+        grid-column: -1 / 1;
+        grid-row: 2;
+        text-align: right;
+        position: relative;
+        left: -1.5em;
+        width: calc(100% + 1.5em);
+    }
+}
+
 
 .about-me {
     max-width: 1000px;
@@ -375,6 +426,77 @@ header {
         z-index: 2;
     }
 }
+
+/* Story */
+
+
+.story {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.story__img {
+    box-shadow: var(--bs);
+}
+
+@media (min-width: 600px) {
+    .story {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        grid-template-areas:
+            "img title"
+            "img subtitle"
+            "img text";
+        grid-column-gap: 2em;
+    }
+
+    .section__title--story {
+        grid-area: title;
+    }
+
+    .section__subtitle--story {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        position: relative;
+        left: -1em;
+        width: calc(100% + 2em);
+        padding-left: 1em;
+        padding-left: calc(200px + 2.5em);
+    }
+
+    .story__img {
+        grid-area: img;
+        position: relative;
+        z-index: 2;
+        max-width: 200px;
+    }
+}
+
+
+
+    /*
+
+    .section__subtitle--story {
+
+        grid-column: 1 / -1;
+        grid-row: 2;
+        position: relative;
+        text-align: right;
+        left: -1em;
+        width: calc(100% + 1.2em);
+        padding-left: 1em;
+        padding-right: calc(100px + 4em);
+        height: 70px;
+
+    }
+
+    */
+
+
+
+
+
+
 
 /* My Work */
 
@@ -420,6 +542,7 @@ header {
     text-align: center;
     padding: 2.5em 0;
     font-size: var(--fs-h3);
+
 
 }
 
